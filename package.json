@@ -1,0 +1,23 @@
+{
+  "name": "steamy-api",
+  "version": "1.0.0",
+  "description": "Steam API for user stats.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "falcon883",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "big-integer": "^1.6.51",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "ioredis": "^4.28.2",
+    "morgan": "^1.10.0"
+  }
+}
