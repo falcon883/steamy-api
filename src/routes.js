@@ -41,7 +41,7 @@ router.get('/user/gamesplayed/:steamID64', async (req, res) => {
  */
 
 router.get('/steamid/:steamid', async (req, res) => {
-    let steamIDs = await Promise.all(req.params.steamid.split(',').map((id) => steam.convertSteamID(id)))
+    let steamIDs = await steam.convertMultipleSteamID(req.params.steamid)
     
     res.status(steamIDs.status_code ? steamIDs.status_code : 200)
     res.json(steamIDs)

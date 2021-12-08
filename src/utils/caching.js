@@ -1,4 +1,5 @@
 const Redis = require("ioredis");
+const logger = require('./logger')
 
 class RedisCache {
     constructor() {
@@ -10,19 +11,18 @@ class RedisCache {
         });
 
         this.redis.on('connect', () => {
-            console.log('Redis: Connected');
+            logger.info('Redis: Connected');
             this.isConnected = true
         })
 
         this.redis.on('error', (e) => {
             this.isConnected = false
-            console.log((new Date()) + 'Redis: Disconnected');
-            console.log(e);
+            logger.error(e);
         });
 
         this.redis.on('reconnecting', () => {
             this.isConnected = false
-            console.log('Redis: Reconnecting');
+            logger.warn('Redis: Reconnecting');
         })
     }
 
@@ -40,7 +40,7 @@ class RedisCache {
 
             return await this.redis.set(key, value, 'EX', expires)
         } catch (error) {
-            console.log(error);
+            logger.error(error)
         }
     }
 
@@ -53,7 +53,7 @@ class RedisCache {
         try {
             return await this.redis.get(key)
         } catch (error) {
-            console.log(error);
+            logger.error(error)
         }
     }
 
@@ -61,7 +61,7 @@ class RedisCache {
         try {
             return await this.redis.mget(keys)
         } catch (error) {
-            console.log(error);
+            logger.error(error)
         }
     }
 
@@ -69,7 +69,7 @@ class RedisCache {
         try {
             return await this.redis.keys(pattern)
         } catch (error) {
-            console.log(error);
+            logger.error(error)
         }
     }
 
