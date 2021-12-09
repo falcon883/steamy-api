@@ -345,6 +345,14 @@ class Steam extends SteamIDConverter {
                 ids = ids.filter(id => !id.error_code)
             }
 
+            if (ids.length === 1 && ids[0].error_code) {
+                return ids[0]
+            }
+
+            if (!ids.length) {
+                return { status_code: 401, error_code: 'E012', error_message: 'Invalid SteamID\'s' }
+            }
+
             return { ids: ids }
         } catch (error) {
             logger.error(error);
