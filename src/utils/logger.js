@@ -1,4 +1,5 @@
 const { createLogger, format, transports } = require('winston')
+const appRoot = require('app-root-path')
 
 
 const logger = createLogger({
@@ -13,8 +14,8 @@ const logger = createLogger({
     ),
     defaultMeta: { service: 'steamy-api' },
     transports: [
-        new transports.File({ filename: 'steamy-api-error.log', level: 'error' }),
-        new transports.File({ filename: 'steampy-api-combined.log' })
+        new transports.File({ filename: `${appRoot}/logs/steamy-api-error.log`, level: 'error' }),
+        new transports.File({ filename: `${appRoot}/logs/steampy-api-combined.log` })
     ]
 });
 
