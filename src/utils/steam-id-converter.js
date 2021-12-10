@@ -1,3 +1,5 @@
+// https://github.com/12pt/steamid-converter
+
 const bigInt = require("big-integer");
 
 

@@ -15,7 +15,7 @@ const logger = createLogger({
     defaultMeta: { service: 'steamy-api' },
     transports: [
         new transports.File({ filename: `${appRoot}/logs/steamy-api-error.log`, level: 'error' }),
-        new transports.File({ filename: `${appRoot}/logs/steampy-api-combined.log` })
+        new transports.File({ filename: `${appRoot}/logs/steamy-api-combined.log` })
     ]
 });
 

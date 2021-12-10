@@ -230,13 +230,6 @@ class Steam extends SteamIDConverter {
             }
 
             await this.setGameURLs(response.data.response.games)
-            // response.data.response.games.map(game => {
-
-            //     game.img_icon_url = `${this.gameImgUrl}${game.appid}/${game.img_icon_url}.jpg`
-            //     game.img_logo_url = `${this.gameImgUrl}${game.appid}/${game.img_logo_url}.jpg`
-
-            //     return game
-            // })
 
             await this.cache.setCache(`USR_RPG_${steamID64}`, JSON.stringify(response.data), CACHE_EXPIRY_1HR)
 
